@@ -10,7 +10,7 @@ public class Ejecutable {
 
 		ArrayList<Persona> listado = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);
-		int eleccion = 0;
+		int eleccion = 3;
 		int edad;
 		String nombre;
 		String ciudad;
@@ -20,6 +20,8 @@ public class Ejecutable {
 			
 			System.out.println("Introduzca 1 para generar un hombre, 2 para una mujer, 3 para salir.");
 			eleccion = Integer.valueOf(sc.nextLine());
+			
+			if(eleccion == 1 || eleccion == 2) {
 
 			System.out.println("introduzca su nombre: ");
 			nombre = sc.nextLine();
@@ -28,21 +30,10 @@ public class Ejecutable {
 			System.out.println("introduzca su ciudad: ");
 			ciudad = sc.nextLine();
 
-			if (eleccion == 1) {
-
-				p = new Hombre(edad, nombre, ciudad);
-
-			} else if (eleccion == 2) {
-
-				p = new Mujer(edad, nombre, ciudad);
-
-			} else {
-
-				System.out.println("adios");
-				eleccion = 3;
-
-			}
+			p = PersonaFactoria.crearPersona(eleccion, nombre, edad, ciudad);
+			
 			listado.add(p);
+			}
 		} while (eleccion != 3);
 
 		sc.close();
